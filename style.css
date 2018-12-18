@@ -8,7 +8,7 @@ html, body{
     margin: 0;
 }
 
-body{
+body *{
     font-family: 'Dosis', sans-serif;
 }
 
@@ -39,6 +39,11 @@ header{
 .header-bg{
     background: url('img/sw-bg2.jpg') no-repeat center center fixed;
     background-size: cover;
+}
+
+.title-link{
+    text-decoration: none;
+    color: inherit;
 }
 
 /***** NAV *****/
@@ -94,7 +99,7 @@ main *{
     border-bottom: 2px solid rgba(170,170,170,0.25);
     color: #ddd;
     font-weight: 300;
-    margin-bottom: 1%; 
+    margin-bottom: 3%; 
 }
 
 .main-subject{
@@ -103,11 +108,73 @@ main *{
 
 /***** RESULTS *****/
 
+.result-main-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 67%;
+    margin: 0 auto;
+}
+
 .result-container{
-    min-height: 160px;
+    height: 120px;
     color: #ddd;
     width: 90%;
     background-color: #2C2B2B;
     border-radius: 10px;
     margin: 0 auto 1% auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.result-img-container, .result-content-container{
+    /* display: inline-block; */
+}
+
+div.result-img-container{
+    height: 100%;
+    border-right: 2px solid #691e14;
+    overflow: hidden;
+    /* width: 33%; */
+}
+
+.result-img-container img{
+    height: auto;
+    max-width: 100%;
+    /* width: 33%; */
+}
+
+.result-content-container{
+    height: 100%;
+    padding: 3%;
+    /* width: 67%; */
+}
+
+.result-content-title{
+    text-transform: uppercase;
+}
+
+/***** PAGINATION *****/
+
+.pagination-container{
+    text-align: center;
+    margin-top: 2%;
+    padding: 1% 0;
+    border-top: 2px solid rgba(170,170,170,0.25);
+    border-bottom: 2px solid rgba(170,170,170,0.25);
+}
+
+.pagination-element{
+    background-color: #222;
+    border: 2px solid #2C2B2B;
+    color: #aaa;
+    font-size: 1.4em;
+    padding: 0.5% 1%;
+    margin-right: 1%;
+    width: 46px;
+    transition: background-color .33s;
+}
+
+.pagination-element:hover{
+    background-color: #2C2B2B;
+    cursor: pointer;
 }
