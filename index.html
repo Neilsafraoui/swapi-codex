@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SWAPI Datas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,700,800" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <header class="header-bg">
+            <h3 class="header-title">Star Wars Codex</h3>
+        </header>
+        <nav class="nav-container">
+            <ul>
+                <li><a href="#" @click="SendRequest('people')">People</a></li>
+                <!-- <li><a href="#">People</a></li> -->
+                <li><a href="#">Planets</a></li>
+                <li><a href="#">Species</a></li>
+                <li><a href="#">Starships</a></li>
+                <li><a href="#">Vehicles</a></li>
+            </ul> 
+        </nav>
+        <main>
+            <!-- <div v-show="requested"> -->
+            <div v-if="requestDone">    
+                <h2 class="main-title">Results for : <span class="main-subject"> {{ subject }} </span></h2>
+                <div class="result-main-container">
+                    <div class="result-container" v-for="res in resultSet">
+                        <h4> {{ res.name }} </h4>
+                    </div>
+                </div>
+            </div>
+            <div v-else>
+                <h2 class="main-title">Loading...</h2>
+            </div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
+
+<!-- Améliorations 
+    v-for sur le menu, avec le @click selon le content -> People -> people
+-->

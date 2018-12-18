@@ -1,0 +1,113 @@
+/***** GENERIC *****/
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+}
+
+body{
+    font-family: 'Dosis', sans-serif;
+}
+
+/***** HEADER *****/
+
+header{
+    height: 200px;
+    max-height: 200px;
+    /* width: 98.8vw;
+    max-width: 98.8vw; */
+    position: relative;
+}
+
+.header-title{
+    position: absolute;
+    z-index: 3;
+    color: #ecf0f1;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    width: 300px;
+    font-size: 2.6em;
+}
+
+.header-bg{
+    background: url('img/sw-bg2.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/***** NAV *****/
+
+.nav-container{
+    width: 100%;
+    background-color: #222;
+    height: 40px;
+}
+
+.nav-container ul{
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.nav-container ul li{
+}
+
+.nav-container ul li a{
+    text-decoration: none;
+    color: #aaa;
+    font-size: 1.1em;
+    transition: color .33s;
+}
+
+.nav-container ul li a:hover{
+    color: #ddd;
+}
+
+/***** MAIN *****/
+
+main{
+    min-height: 100vh;
+    width: 100%;
+    padding: 3%;
+    /* background: url('img/sw-bg3.jpg') no-repeat center center fixed;
+    background-size: cover; */
+    background-color: rgb(14, 14, 14);
+}
+
+main *{
+    margin: 0;
+}
+
+.main-title{
+    padding: 1% 0;
+    text-align: center;
+    border-top: 2px solid rgba(170,170,170,0.25);
+    border-bottom: 2px solid rgba(170,170,170,0.25);
+    color: #ddd;
+    font-weight: 300;
+    margin-bottom: 1%; 
+}
+
+.main-subject{
+    font-weight: bold;
+}
+
+/***** RESULTS *****/
+
+.result-container{
+    min-height: 160px;
+    color: #ddd;
+    width: 90%;
+    background-color: #2C2B2B;
+    border-radius: 10px;
+    margin: 0 auto 1% auto;
+}
