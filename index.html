@@ -1,62 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Star Wars Codex</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,700,800" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-</head>
-<body>
-    <div id="app">
-        <header class="header-bg">
-            <h3 class="header-title"><a class="title-link" href="index.html"> Star Wars Codex</a></h3>
-        </header>
-        <nav class="nav-container">
-            <ul>
-                <li><a href="#" @click="SendRequest('people', 0)">People</a></li>
-                <!-- <li><a href="#">People</a></li> -->
-                <li><a href="#">Planets</a></li>
-                <li><a href="#">Species</a></li>
-                <li><a href="#">Starships</a></li>
-                <li><a href="#">Vehicles</a></li>
-            </ul> 
-        </nav>
-        <main>
-            <!-- <div v-show="requested"> -->
-            <div class="main-container" v-if="requestState == 'finished'">    
-                <h2 class="main-title">Results for : <span class="main-subject"> {{ subject }} </span></h2>
-                <div class="result-main-container">
-                    <div class="result-container" v-for="res in resultSet">
-                        <div class="result-img-container">
-                            <img :src="'img/'+res.imgurl+'.jpg'" alt="">
-                        </div>
-                        <div class="result-content-container">
-                            <h4 class="result-content-title"> {{ res.name }} </h4>
-                            <p> <span>{{ res.height }} cm -</span> <span> {{ res.mass }} kg </span> </p>
-                            <p> Born on - Year {{ res.birth_year }} </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div v-else-if="requestState == 'pending'">
-                <h2 class="main-title">Loading...</h2>
-            </div>
-            <div v-else-if="requestState == 'none'">
-                <h2 class="main-title">No request yet - Choose a category above</h2>
-            </div>
-            <div class="pagination-container" v-if="fullSetLength > 0">
-                <button class="pagination-element" 
-                v-for="i in Math.floor(fullSetLength / 10)"
-                @click="SendRequest('people', i)"
-                >{{ i }}</button>
-            </div>
-        </main>
-    </div>
-    <script src="main.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Star Wars Codex</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,700,800" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    </head>
+    <body>
+        <div id="app">
+            <header class="header-bg">
+                <h3 class="header-title"><a class="title-link" href="index.html"> Star Wars Codex</a></h3>
+            </header>
+            <nav class="nav-container">
+                <ul>
+                    <li><a href="pages/people.html" @click="SendRequest('people', 0)">People</a></li>
+                    <!-- <li><a href="#">People</a></li> -->
+                    <li><a href="#">Planets</a></li>
+                    <li><a href="#">Species</a></li>
+                    <li><a href="#">Starships</a></li>
+                    <li><a href="#">Vehicles</a></li>
+                </ul> 
+            </nav>
+            <main>
+                <h2 class="greetings"> Hello there. Here you can find a lot of informations about the Star Wars universe, just clic a category in the navigation menu and browse the content ! </h2>
+            </main>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
 </html>
 
 <!-- Améliorations 

@@ -37,7 +37,7 @@ header{
 }
 
 .header-bg{
-    background: url('img/sw-bg2.jpg') no-repeat center center fixed;
+    background: url('../img/sw-bg2.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -79,6 +79,13 @@ header{
 
 /***** MAIN *****/
 
+/*** HOME PAGE ***/
+
+.greetings{
+    color: #ddd;
+    text-align: center;
+}
+
 main{
     min-height: 100vh;
     width: 100%;
@@ -104,6 +111,47 @@ main *{
 
 .main-subject{
     font-weight: bold;
+}
+
+/***** RESEARCH *****/
+
+.research-container{
+    background-color: #3C3C3C;
+    padding: 1.5%;
+    border-radius: 6px;
+    margin-bottom: 3%;
+    width: 67%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-button, .search-input {
+    height: 40px;
+    color: #ddd;
+}
+
+.search-input{
+    width: 88%;
+    background: none;
+    border:none;
+    border-bottom: 1px solid #222;
+    outline: none;
+    font-size: 1.2em;
+}
+
+.search-button{
+    width: 10%;
+    border-radius: 6px;
+    margin-left: 1%;
+    border: 1px solid #151515;
+    background-color: #333;
+    font-size: 1.1em;
+    transition: background-color .33s;
+}
+
+.search-button:hover{
+    cursor: pointer;
+    background-color: #151515;
 }
 
 /***** RESULTS *****/
@@ -143,6 +191,18 @@ div.result-img-container{
     /* width: 33%; */
 }
 
+.img{
+    position: relative;
+    float: left;
+    width:  100%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
 .result-content-container{
     height: 100%;
     padding: 3%;
@@ -151,6 +211,11 @@ div.result-img-container{
 
 .result-content-title{
     text-transform: uppercase;
+}
+
+.result-empty{
+    color: #ddd;
+    text-align: center;
 }
 
 /***** PAGINATION *****/

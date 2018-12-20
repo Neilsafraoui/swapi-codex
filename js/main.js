@@ -10,7 +10,9 @@ var vm = new Vue({
             'finished': 2
         },
         resultSet: [],
-        fullSetLength: 0
+        fullSetLength: 0,
+        queryName: '',
+        currentPage: ''
     },
     methods: {
         SendRequest(subject, id) {
@@ -74,13 +76,77 @@ var vm = new Vue({
             //console.log("Getting homeworld for : ", array);
 
             //trop couteux de faire 10 requête pour tout get
+        },
+        SearchByName(subject){
+            console.log("name should be queryName : " + this.queryName);
+
+            // On va faire une requête un peu différente en utilisant l'api coté "search"
+            // query example : https://swapi.co/api/people/?search
+
+            console.log("Starting sendRequest");
+
+            // Car dans la request, le scope change
+            var self = this;
+
+            // Dynamic change pour le main    
+            self.requestState = 'pending';
+
+            // On reprend le subject pour l'afficher dans le titre
+            this.subject = subject.toUpperCase();
+            console.log("subject : "+this.subject);
+
+            // Hack pour afficher la query aussi
+            if(this.queryName.length > 0){
+                this.subject += " - " + this.queryName;
+            }
+
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) { 
+                    var jsonData = JSON.parse(request.responseText);
+                    console.log("jsonData : "+jsonData);
+
+                    //on stocke direct les resultats
+                    self.resultSet = jsonData.results;
+                    console.log("resultSet : "+self.resultSet);
+         
+                    //on stocke le counter dans fullSetLength
+                    self.fullSetLength = jsonData.count;
+                    console.log("fullSetLength : "+self.fullSetLength);
+
+                    if(self.resultSet.length > 0){
+                        console.log("got content, passing to HandleImageUrl & gethomeworld");
+                        self.HandleImageUrl(self.resultSet);
+                    }
+
+                    // should be last instruction?
+                    self.requestState = 'finished';
+                    console.log("requestDone..... : "+self.requestState);
+                }
+            };
+
+            request.open("GET", "https://swapi.co/api/"+ subject + "/?search=" + self.queryName, true); 
+            console.log("1. https://swapi.co/api/"+ subject + "/?search=" + self.queryName);
+           
+            
+            request.send(); //envoi de la requête
         }
     },
     mounted(){
         this.requestState = 'none';
+        this.currentPage = window.location.pathname.substring(location.pathname.lastIndexOf("/") + 1).replace(".html", "");
+        
+        console.log("current page : " + this.currentPage);
+
+        // Pas optimal, attention si on rajoute une page / ! \
+        if(this.currentPage != 'index'){
+           this.SendRequest(this.currentPage, 0);
+        }
+
+        /* console.log("location pn : " + window.location.pathname);
+        console.log("location : " + window.location.pathname.substring(location.pathname.lastIndexOf("/") + 1).replace(".html", "")); */
     }
 })
-
 
 /***** OLD  *****/
 
